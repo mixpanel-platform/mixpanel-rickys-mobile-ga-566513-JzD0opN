@@ -24,10 +24,16 @@
       });
 
        $.when($dau, $mau).done(function(dau, mau) {
-          var dauMau = dau.avg().divide(mau.sum()).values();
+          var sortedData = _.chain(dauMau) 
+            .pairs()                     
+            .sortBy(function(dauMau) {   
+                return -dauMau[1];
+            })
+            .object()                 
+            .value(); 
                 $('<div></div>').appendTo('body').MPChart({ 
             chartType: 'bar',                       
-            data: dauMau                            
+            data: sortedData                            
         });
        });
     </script>
