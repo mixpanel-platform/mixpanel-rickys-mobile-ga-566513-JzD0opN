@@ -8,7 +8,7 @@
   </head>
   <body class="mixpanel-platform-body">
    <script>
-              var eventName = 'Game Played';                         
+      var eventName = 'Game Played';                         
       var $dau = MP.api.segment(eventName, 'mp_country_code', {
           from: moment().subtract(30, 'days'),                  
           to: moment().subtract(1, 'days'),                     
@@ -16,14 +16,7 @@
           type: 'unique'                                        
       });
 
-       $.when($dau, $mau).done(function(dau, mau) {
-          var dauMau = dau.avg().divide(mau.sum()).values();
-                $('<div></div>').appendTo('body').MPChart({ 
-            chartType: 'bar',                       
-            data: dauMau                          
-        });
-      
-          var $mau = MP.api.segment(eventName, 'mp_country_code', { 
+       var $mau = MP.api.segment(eventName, 'mp_country_code', { 
           from: moment().subtract(30, 'days'),                 
           to: moment().subtract(1, 'days'),                     
           unit: 'month',                                        
