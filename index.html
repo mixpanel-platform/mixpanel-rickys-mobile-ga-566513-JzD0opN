@@ -16,8 +16,19 @@
           type: 'unique'                                        
       });
 
-      $dau.done(function(results) {
-          console.log(results.values());
+       $.when($dau, $mau).done(function(dau, mau) {
+          alert('Success!');
+      });
+      
+          var $mau = MP.api.segment(eventName, 'mp_country_code', { 
+          from: moment().subtract(30, 'days'),                 
+          to: moment().subtract(1, 'days'),                     
+          unit: 'month',                                        
+          type: 'unique'                                        
+      });
+
+       $.when($dau, $mau).done(function(dau, mau) {
+          alert('Success!');
       });
     </script>
   </body>
