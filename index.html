@@ -17,7 +17,8 @@
       });
 
        $.when($dau, $mau).done(function(dau, mau) {
-          alert('Success!');
+          var dauMau = dau.avg().divide(mau.sum()).values();
+        console.log(dauMau);
       });
       
           var $mau = MP.api.segment(eventName, 'mp_country_code', { 
@@ -28,7 +29,8 @@
       });
 
        $.when($dau, $mau).done(function(dau, mau) {
-          alert('Success!');
+          var dauMau = dau.avg().divide(mau.sum()).values();
+        console.log(dauMau);
       });
     </script>
   </body>
