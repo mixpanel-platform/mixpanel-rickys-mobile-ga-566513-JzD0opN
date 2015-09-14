@@ -18,8 +18,10 @@
 
        $.when($dau, $mau).done(function(dau, mau) {
           var dauMau = dau.avg().divide(mau.sum()).values();
-        console.log(dauMau);
-      });
+                $('<div></div>').appendTo('body').MPChart({ 
+            chartType: 'bar',                       
+            data: dauMau                          
+        });
       
           var $mau = MP.api.segment(eventName, 'mp_country_code', { 
           from: moment().subtract(30, 'days'),                 
@@ -30,8 +32,10 @@
 
        $.when($dau, $mau).done(function(dau, mau) {
           var dauMau = dau.avg().divide(mau.sum()).values();
-        console.log(dauMau);
-      });
+                $('<div></div>').appendTo('body').MPChart({ 
+            chartType: 'bar',                       
+            data: dauMau                            
+        });
     </script>
   </body>
 </html>
