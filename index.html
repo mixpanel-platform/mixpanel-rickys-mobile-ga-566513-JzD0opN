@@ -24,15 +24,16 @@
       });
 
        $.when($dau, $mau).done(function(dau, mau) {
-          var sortedData = _.chain(dauMau) 
-            .pairs()                     
-            .sortBy(function(dauMau) {   
+          var dauMau = dau.avg().divide(mau.sum()).values();
+           var sortedData = _.chain(dauMau) // enables function chaining
+            .pairs()                     // convert each object to an array for sorting
+            .sortBy(function(dauMau) {   // sort by the dau/mau value in descending order
                 return -dauMau[1];
             })
-            .object()                 
-            .value(); 
-                $('<div></div>').appendTo('body').MPChart({ 
-            chartType: 'bar',                       
+            .object()                    // convert each array back to an object
+            .value();                    // end the chaining and return the value
+        $('<div></div>').appendTo('body').MPChart({ // create chart
+          chartType: 'bar',                                        
             data: sortedData                            
         });
        });
